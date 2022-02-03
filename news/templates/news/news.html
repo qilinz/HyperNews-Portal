@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>Hyper news</h2>
+    {% for date, news in news_by_date.items %}
+    <h4>{{ date }}</h4>
+    <ul>
+        {% for item in news %}
+            <li><a href="/news/{{ item.link }}/">{{ item.title }}</a></li>
+        {% endfor %}
+    </ul>
+    {% endfor %}
+<a href="/news/create/"></a>
+
+<br>
+
+<form action="/news/">
+    {% csrf_token %}
+    <p>Search Articles: </p>
+    <input type="text" name="q">
+    <button type="submit">Search</button>
+
+</form>
+</body>
+</html>
